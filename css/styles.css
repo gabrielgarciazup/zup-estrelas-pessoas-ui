@@ -27,8 +27,6 @@ body {
 /* navbar */
 
 .navbar {
-    height: 4.5rem;
-    width: 100vw;
     position: fixed;
     background-color: var(--bg-primary);
     box-shadow: 0 4px 8px 0 #00000033;
@@ -77,17 +75,9 @@ body {
 .nav-link input#search-input {
     border: none;
     outline: none;
-    width: 40vw;
-    font-size: 18px;
+    font-size: 16px;
     font-family: 'Poppins';
     background-color: rgba(255, 255, 255, 0);
-    transition: var(--default-transition);
-}
-
-.nav-link input#search-input:focus {
-    border: none;
-    outline: none;
-    width: 60vw;
     transition: var(--default-transition);
 }
 
@@ -106,8 +96,6 @@ body {
 /* sidebar */
 
 .sidebar {
-    height: 100vh;
-    width: 4.5rem;
     position: fixed;
     padding: 0;
     margin: 4.5rem 0 0 0;
@@ -115,22 +103,11 @@ body {
     box-shadow: 0 8px 8px 0 #00000033;
 }
 
-.sidebar:hover {
-    width: 13rem;
-    transition: var(--default-transition);
-}
-
-.sidebar:hover .link-text {
-    display: block;
-}
-
 .sidebar-nav {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .side-item {
@@ -180,7 +157,7 @@ body {
 
 .people-list {
     width: 94%;
-    margin: 4.5rem 4.5rem 0 4.5rem;
+    margin: 4.5rem 4.5rem 4.5rem 4.5rem;
 }
 
 .people-list-container {
@@ -227,4 +204,113 @@ body {
 
 .person .icons {
     color: #ABABAB;
+}
+
+/* small screens */
+
+@media only screen and (max-width: 950px) {
+
+.navbar {
+    width: 100vw;
+    height: 5rem;
+}
+
+.nav-link input#search-input {
+    width: 30vw;
+}
+
+.sidebar {
+    bottom: 0;
+    width: 100vw;
+    height: 5rem;
+}
+
+.sidebar-nav {
+    flex-direction: row;
+}
+
+.side-link {
+    justify-content: center;
+    align-content: center;
+}
+
+.people-list-container img {
+    width: 60px;
+}
+
+.person {
+    min-width: 350px;
+}
+
+.person .person-email {
+    display: none;
+}
+
+.person .person-number {
+    display: none;
+}
+
+.person .person-state {
+    display: none;
+}
+
+.person img {
+    padding-right: 1rem;
+}
+
+.person span {
+    padding: 0 1rem 0 1rem;
+}
+
+.person i {
+    padding: 0 .2rem 0 .2rem;
+}
+
+}
+
+/* large screens */
+
+@media only screen and (min-width: 950px) {
+
+.navbar {
+    height: 4.5rem;
+    width: 100vw;
+}
+
+.sidebar {
+    height: 100vh;
+    width: 4.5rem;
+}
+
+.sidebar:hover {
+    width: 13rem;
+    transition: var(--default-transition);
+}
+
+.sidebar:hover .link-text {
+    display: block;
+}
+
+.sidebar-nav {
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav-link input#search-input {
+    width: 40vw;
+}
+
+.nav-link input#search-input:focus {
+    width: 60vw;
+}
+
+.people-list {
+    justify-content: center;
+    align-items: center;
+}
+
+.people-list-container img {
+    width: 80px;
+}
+
 }
