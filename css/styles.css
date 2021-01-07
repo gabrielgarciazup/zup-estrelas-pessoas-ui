@@ -1,11 +1,14 @@
 :root {
-    font-size: 18px;
+    font-size: 16px;
     font-family: 'Poppins';
 
     --text-primary: #000000;
     --text-secondary: #ffffff;
+
     --bg-primary: #ffffff;
     --bg-secondary: #000000;
+    --bg-tertiary: #eeeeee;
+    
     --zup-primary: #0C3455;
     --zup-secondary: #8DC63F;
     --zup-tertiary: #EF4123;
@@ -14,8 +17,9 @@
 }
 
 body {
+    display: flex;
     color: var(--text-primary);
-    background-color: var(--bg-primary);
+    background-color: var(--bg-tertiary);
     margin: 0;
     padding: 0;
 }
@@ -23,7 +27,6 @@ body {
 /* navbar */
 
 .navbar {
-    display: grid;
     height: 4.5rem;
     width: 100vw;
     position: fixed;
@@ -77,6 +80,7 @@ body {
     width: 40vw;
     font-size: 18px;
     font-family: 'Poppins';
+    background-color: rgba(255, 255, 255, 0);
     transition: var(--default-transition);
 }
 
@@ -95,18 +99,18 @@ body {
 #search-box {
     margin-top: 1.1rem;
     padding: .25rem;
-    border: 1px solid var(--zup-primary);
-    border-radius: 1rem;
+    border: 2px solid #ababab42;
+    border-radius: 10rem;
 }
 
 /* sidebar */
 
 .sidebar {
-    display: grid;
-    margin-top: 4.5rem;
     height: 100vh;
     width: 4.5rem;
     position: fixed;
+    padding: 0;
+    margin: 4.5rem 0 0 0;
     background-color: var(--bg-primary);
     box-shadow: 0 8px 8px 0 #00000033;
 }
@@ -172,3 +176,55 @@ body {
 
 /* END-TODO: revisar */
 
+/* people list */ 
+
+.people-list {
+    width: 94%;
+    margin: 4.5rem 4.5rem 0 4.5rem;
+}
+
+.people-list-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 2.5rem;
+    list-style: none;
+}
+
+.people-list-container img {
+    display: flex;
+    width: 80px;
+    border-radius: 50%;
+}
+
+.person {
+    display: flex;
+    padding: 0;
+    margin: 0.05rem 0 0.05rem 0;
+    border-radius: 0.2rem;
+    box-shadow: 0 4px 8px 0 #00000033;
+    background-color: var(--bg-primary);
+}
+
+.person .person-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    margin: 0;
+    box-sizing: border-box;
+    width: 100%;
+    text-decoration: none;
+}
+
+.person span {
+    color: #ABABAB;
+}
+
+.person .person-name {
+    color:var(--zup-primary);
+}
+
+.person .icons {
+    color: #ABABAB;
+}
