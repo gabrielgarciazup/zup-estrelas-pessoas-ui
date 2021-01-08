@@ -81,7 +81,7 @@ body {
     transition: var(--default-transition);
 }
 
-.nav-link input#search-input::placeholder {
+#search-input::placeholder {
     font-size: 18px;
     font-family: 'Poppins';
 }
@@ -125,6 +125,7 @@ body {
 
 .side-link:hover {
     filter: grayscale(0%);
+    background-color: var(--bg-tertiary);
     transition: var(--default-transition);
 }
 
@@ -174,6 +175,10 @@ body {
     border-radius: 50%;
 }
 
+.people-list-container img:hover {
+    filter: opacity(50%);
+}
+
 .person {
     display: flex;
     padding: 0;
@@ -202,7 +207,8 @@ body {
     color:var(--zup-primary);
 }
 
-.person .icons {
+.icons a {
+    text-decoration: none;
     color: #ABABAB;
 }
 
@@ -215,7 +221,7 @@ body {
     height: 5rem;
 }
 
-.nav-link input#search-input {
+#search-input {
     width: 30vw;
 }
 
@@ -296,11 +302,11 @@ body {
     align-items: center;
 }
 
-.nav-link input#search-input {
+#search-input {
     width: 40vw;
 }
 
-.nav-link input#search-input:focus {
+#search-input:focus {
     width: 60vw;
 }
 
