@@ -149,6 +149,10 @@ function loadButton(person, personType) {
 
 function switchPersonType(person, newType) {
 
+    if (person.type === newType) {
+        return;
+    }
+
     let currentPerson = document.getElementById("person" + person.idCount);
     if (currentPageFilter !== '') {
         currentPerson.parentNode.removeChild(currentPerson);
@@ -162,8 +166,6 @@ function switchPersonType(person, newType) {
         }
     }
 
-    if (person.type !== newType) {
-        person.type = newType;
-    }
+    person.type = newType;
 
 }
