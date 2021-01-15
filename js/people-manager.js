@@ -1,3 +1,5 @@
+// Lista de pessoas cadastradas
+
 const peopleList = [
     {
         idCount: 0,
@@ -33,8 +35,46 @@ const peopleList = [
         birthday: '00-00-0000',
         password: '123456',
         type: 'done'
+    },
+
+    {
+        idCount: 3,
+        imgLink: '../img/avatar_2.png',
+        name: 'Susan Roberts',
+        email: 'susan@roberts.com',
+        number: '(00) 0 0000 0000',
+        location: 'Cidade - ES',
+        birthday: '00-00-0000',
+        password: '123456',
+        type: 'delete'
+    },
+
+    {
+        idCount: 4,
+        imgLink: '../img/avatar_1.png',
+        name: 'Bill Davis',
+        email: 'bill@davis.com',
+        number: '(00) 0 0000 0000',
+        location: 'Cidade - ES',
+        birthday: '00-00-0000',
+        password: '123456',
+        type: 'done'
+    },
+
+    {
+        idCount: 5,
+        imgLink: '../img/avatar_2.png',
+        name: 'Lea Zemeckis',
+        email: 'lea@zemeckis.com',
+        number: '(00) 0 0000 0000',
+        location: 'Cidade - ES',
+        birthday: '00-00-0000',
+        password: '123456',
+        type: ''
     }
 ];
+
+// Descrição de cada informação no modal
 
 const descriptionList = [
     {
@@ -73,6 +113,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 let currentPageFilter = '';
+
+// Carregamento e criação de itens html por meio de "peopleList"
 
 function loadPeople(personType, list) {
     const peopleListContainer = document.getElementById("people-list-container");
@@ -191,6 +233,8 @@ function loadButton(person, personType) {
 
 }
 
+// Determinação do tipo de cada pessoa
+
 function switchPersonType(person, newType) {
 
     if (person.type === newType) {
@@ -213,6 +257,8 @@ function switchPersonType(person, newType) {
     person.type = newType;
 
 }
+
+// Modal com informações gerais de "peopleList"
 
 function toggleModal(person) {
 
