@@ -25,7 +25,7 @@
             <li id="search-box" class="nav-item">
                 <a href="#" class="nav-link">
                     <i id="search-icon" class="material-icons" style="font-size: 1.5rem;">search</i>
-                    <input id="search-input" type="text" placeholder="Buscar">
+                    <input onkeyup="filterByInfo(this);" id="search-input" type="text" placeholder="Buscar">
                     <span class="link-text">Search</span>
                 </a>
             </li>
@@ -45,21 +45,21 @@
         <ul class="sidebar-nav">
 
             <li class="side-item">
-                <a href="#" onclick="loadPeople('')" class="side-link">
+                <a href="#" onclick="loadPeople('')" class="side-link" id="-link">
                     <i class="material-icons" style="font-size: 1.5rem;">select_all</i>
                     <span class="link-text">Todos</span>
                 </a>
             </li>
 
             <li class="side-item">
-                <a href="#" onclick="loadPeople('done')" class="side-link">
+                <a href="#" onclick="loadPeople('done')" class="side-link" id="done-link">
                     <i class="material-icons" style="font-size: 1.5rem;">done_all</i>
                     <span class="link-text">Atendidos</span>
                 </a>
             </li>
 
             <li class="side-item">
-                <a href="#" onclick="loadPeople('delete')" class="side-link">
+                <a href="#" onclick="loadPeople('delete')" class="side-link" id="delete-link">
                     <i class="material-icons" style="font-size: 1.5rem;">delete_sweep</i>
                     <span class="link-text">Lixeira</span>
                 </a>
@@ -71,6 +71,36 @@
     <div id="people-list">  
 
         <ul id="people-list-container"></ul>
+
+    </div>
+
+    <div class="modal-container" id="modal-parent" style="display: none">
+
+        <div class="modal">
+
+            <span onclick="toggleModal();" class="material-icons" id="modal-close-button">keyboard_arrow_left</span>
+
+            <div class="modal-person" id="modal-person">
+
+                <img id="modal-person-img" src="">
+
+                <span class="modal-person-description"></span>
+                <span class="modal-person-info"></span>
+
+                <div class="modal-person-icons">
+
+                    <span class="material-icons" id="modal-person-name" value="" onmouseover="showInfoOnHover(this);">person</span>
+                    <span class="material-icons" id="modal-person-email" value="" onmouseover="showInfoOnHover(this);">email</span>
+                    <span class="material-icons" id="modal-person-birthday" value="" onmouseover="showInfoOnHover(this);">today</span>
+                    <span class="material-icons" id="modal-person-location" value="" onmouseover="showInfoOnHover(this);">location_on</span>
+                    <span class="material-icons" id="modal-person-number" value="" onmouseover="showInfoOnHover(this);">call</span>
+                    <span class="material-icons" id="modal-person-password" value="" onmouseover="showInfoOnHover(this);">vpn_key</span>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 
