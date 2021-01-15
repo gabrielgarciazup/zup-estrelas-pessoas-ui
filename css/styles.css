@@ -171,6 +171,7 @@ body {
 }
 
 #people-list-container img:hover {
+    cursor: pointer;
     filter: opacity(50%);
 }
 
@@ -343,6 +344,8 @@ body {
 }
 
 .modal-person-icons .material-icons:hover {
+    cursor: default;
+    
     filter: grayscale(0%);
     color: var(--zup-primary);
     transition: var(--default-transition);
