@@ -2,31 +2,69 @@ const peopleList = [
     {
         idCount: 0,
         imgLink: '../img/avatar_2.png',
-        name: 'Nome 0',
-        email: 'email@email.com',
-        phoneNumber: '(00) 0 0000 0000',
+        name: 'Shirley Savage',
+        email: 'shirley@savage.com',
+        number: '(00) 0 0000 0000',
         location: 'Cidade - ES',
+        birthday: '00-00-0000',
+        password: '123456',
         type: 'delete'
     },
 
     {
         idCount: 1,
         imgLink: '../img/avatar_1.png',
-        name: 'Nome 1',
-        email: 'email@email.com',
-        phoneNumber: '(00) 0 0000 0000',
+        name: 'Clifford Fitzgerald',
+        email: 'clifford@fitzgeral.com',
+        number: '(00) 0 0000 0000',
         location: 'Cidade - ES',
+        birthday: '00-00-0000',
+        password: '123456',
         type: ''
     },
 
     {
         idCount: 2,
         imgLink: '../img/avatar_2.png',
-        name: 'Nome 2',
-        email: 'email@email.com',
-        phoneNumber: '(00) 0 0000 0000',
+        name: 'Victoria Wise',
+        email: 'victoria@wise.com',
+        number: '(00) 0 0000 0000',
         location: 'Cidade - ES',
+        birthday: '00-00-0000',
+        password: '123456',
         type: 'done'
+    }
+];
+
+const descriptionList = [
+    {
+        key: "name",
+        value: "Hi, my name is"
+    },
+
+    {
+        key: "email",
+        value: "My e-mail address is"
+    },
+
+    {
+        key: "birthday",
+        value: "My birthday is"
+    },
+
+    {
+        key: "location",
+        value: "My address is"
+    },
+
+    {
+        key: "number",
+        value: "My phone number is"
+    },
+
+    {
+        key: "password",
+        value: "My password is"
     }
 ];
 
@@ -36,20 +74,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
 let currentPageFilter = '';
 
-function loadPeople(personType) {
+function loadPeople(personType, list) {
     const peopleListContainer = document.getElementById("people-list-container");
     peopleListContainer.innerHTML = '';
+
     currentPageFilter = personType;
-    loadPeopleList(personType);
+    loadPeopleList(personType, list);
+
 }
 
-function loadPeopleList(personType) {
+function loadPeopleList(personType, list) {
+
+    if (list == undefined) {
+        list = peopleList;
+    }
 
     const peopleListContainer = document.getElementById("people-list-container");
 
-    var filteredList = peopleList;
+    var filteredList = list;
     if (personType !== '') {
-        filteredList = peopleList.filter((person) =>
+        filteredList = list.filter((person) =>
             person.type === personType
         );
     }
@@ -72,7 +116,7 @@ function loadPeopleList(personType) {
 
         loadPersonInfo(person, "name");
         loadPersonInfo(person, "email");
-        loadPersonInfo(person, "phoneNumber");
+        loadPersonInfo(person, "number");
         loadPersonInfo(person, "location");
 
         loadIcons(person);
@@ -86,7 +130,7 @@ function loadAvatar(person) {
     let newPersonInfo = document.getElementById('info' + person.idCount);
 
     let newPersonLink = document.createElement('a');
-    newPersonLink.setAttribute("href", "path");
+    newPersonLink.onclick = () => { toggleModal(person); };
 
     let newPersonImg = document.createElement('img');
     newPersonImg.setAttribute("src", person.imgLink);
@@ -167,5 +211,86 @@ function switchPersonType(person, newType) {
     }
 
     person.type = newType;
+
+}
+
+function toggleModal(person) {
+
+    // turns modal on or off
+
+    let modalContainer = document.getElementById("modal-parent");
+
+    let display = modalContainer.style.display.includes("none") ? "flex" : "none";
+
+    modalContainer.setAttribute("style", "display: " + display);
+
+    // person info
+
+    if (person !== undefined) {
+
+        loadModalPersonInfo(person, "name");
+        loadModalPersonInfo(person, "email");
+        loadModalPersonInfo(person, "birthday");
+        loadModalPersonInfo(person, "location");
+        loadModalPersonInfo(person, "number");
+        loadModalPersonInfo(person, "password");
+
+        let modalPersonImg = document.getElementById("modal-person-img");
+
+        modalPersonImg.setAttribute("src", person["imgLink"]);
+
+        let modalPersonInfo = document.getElementsByClassName("modal-person-info")[0];
+        modalPersonInfo.innerText = person["name"];
+
+        let modalPersonDescription = document.getElementsByClassName("modal-person-description")[0];
+        modalPersonDescription.innerText = getDescription("name");
+
+    }
+
+}
+
+function loadModalPersonInfo(person, key) {
+
+    let modalPerson = document.getElementById('modal-person-' + key);
+
+    modalPerson.setAttribute("value", person[key]);
+
+}
+
+function showInfoOnHover(modalPersonSpan) {
+
+    let modalPersonInfo = document.getElementsByClassName("modal-person-info")[0];
+    modalPersonInfo.innerText = modalPersonSpan.getAttribute("value");
+
+    let modalPersonDescription = document.getElementsByClassName("modal-person-description")[0];
+    modalPersonDescription.innerText = getDescription(modalPersonSpan.id);
+}
+
+function getDescription(id) {
+
+    let descriptionFilter = '';
+
+    descriptionList.forEach((description) => {
+
+        if (id.includes(description["key"])) {
+            descriptionFilter = description["value"];
+        }
+
+    });
+
+    return descriptionFilter;
+}
+
+function filterByInfo(input) {
+
+    console.log(input.value);
+
+    let filteredList = peopleList.filter((person) => {
+
+        return person["name"].toUpperCase().includes(input.value.toUpperCase())
+            || person["email"].toUpperCase().includes(input.value.toUpperCase());
+    });
+
+    loadPeople(currentPageFilter, filteredList);
 
 }
